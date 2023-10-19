@@ -1,13 +1,12 @@
 body {
-  background: #f7f7f7;
-  color: #444;
+  background: rgb(223, 222, 222);
   padding: 20px;
   font-size: 16px;
   font-family: 'Roboto', sans-serif;  line-height: 1.3;
 }
 
 form {
-  background: #fff;
+  background: rgb(223, 222, 222);
   border-radius: 5px;
   padding: 15px;
   display: flex;
@@ -19,45 +18,57 @@ input {
   padding: 10px 12px;
   border-radius: 5px;
   margin-right: 8px;
-  border: 2px solid #444;
+  border: 1px solid #aaa7a7;
+  box-shadow: 10px 5px 5px grey;
+
 }
 
 button {
-  background: hotpink;
+  background: #7cbd98;
   border-radius: 5px;
   width: 15%;
-}
+  box-shadow: 10px 5px 5px grey;
+  color:rgb(255, 252, 252);
+  border: 1px solid #aaa7a7;
 
-button:hover {
-  background: brown;
+  &:active {
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);
+  }
+
+  &:hover {
+  background: #75ae8e;
   cursor: pointer;
+}
 }
 
 #container{
   display: flex;
-  flex-direction: column;
-  margin: 20px;
-  padding: 8px;
-  background: white;
-  border-radius: 5px;
-}
-img {
-  height: 70px;
-  width:70px;
+  flex-direction:column;
   margin: 8px;
+  background: #fcffff;
   border-radius: 5px;
-}
-
-a{
-  text-decoration: none;
+  box-shadow: 10px 5px 5px grey;
  
 }
 
-a:hover {
-  color: hotpink;
-  text-decoration: underline;
+img {
+  height: 10%;
+  width: 10%;
+  border-radius: 5px;
+  margin-right: 15px;
+  padding: 10px;
 }
 
-a:visited {
-  color: green;
+a {
+  text-decoration: none;
+  color: rgb(63, 63, 63);
+  font-size: 1.4em;
+  display: flex;
+  align-items: center;
+}
+
+
+a:hover {
+  color: rgb(63, 63, 63);
+  text-decoration: underline;
 }

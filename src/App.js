@@ -1,12 +1,18 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./styles.css";
 
 const apiUrl = "https://opengraph.io/api/1.1/site";
-const appId = "1afff298-029e-4b94-a4c1-2a4595cc036a";
+const appId = "58858c7bcf07b61e64257391";
 
 export default function App() {
   const [bookmarks, setBookmarks] = useState([]);
   const [url, setUrl] = useState("");
+
+  // on mount, go getbookmarks out of localStorage
+  useEffect(() => {
+    const lsBookmarks = JSON.parse(localStorage.getItem("bookmarks")) || [];
+    setBookmarks(lsBookmarks);
+  }, []);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -23,10 +29,14 @@ export default function App() {
           url: data.hybridGraph.url,
         };
 
-        setBookmarks([...bookmarks, newBookmark]);
-      });
+        const newBookmarks = [...bookmarks, newBookmark];
 
-    // add a bookmark to our bookmarks state variable
+        // add a bookmark to our bookmarks state variable
+        setBookmarks(newBookmarks);
+
+        // persist bookmarks to localStorage
+        localStorage.setItem("bookmarks", JSON.stringify(newBookmarks));
+      });
   }
 
   return (
@@ -50,6 +60,7 @@ export default function App() {
             href={bookmark.url}
             className="bookmark"
             target="_blank"
+            rel="noreferrer"
           >
             <img src={bookmark.image} alt="bookmark title" />
             <span>{bookmark.title}</span>
